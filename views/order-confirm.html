@@ -1,0 +1,51 @@
+<div class="container confirm-page">
+        <div class="logo center"><a ui-sref="home"><img src="images/logo.png"></a></div>
+	<div class="checkout__block">
+	
+		<h2>Ваш заказ</h2>
+
+		<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 summary">
+			<div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 text-left">
+                            <p><span class="gray">Уборка квартиры:</span></p>
+                                <p>{{general.current.rooms}} жилой и {{general.current.bathrooms}} ванной комнатой</p>
+				<p><span class="gray">Дополнительные услуги</span></p>
+				<p ng-show="general.checkout.service.window">Мойка окон, {{general.checkout.service.window}} шт.,{{general.checkout.service.window*price.window.cost}} грн.</p>
+				<p ng-show="general.checkout.service.roller">Жалюзи, {{general.checkout.service.roller}} шт.,{{general.checkout.service.roller*price.roller.cost}} грн.</p>
+				<p ng-show="general.checkout.service.balcon">Уборка балкона, {{general.checkout.service.balcon*price.balcon.cost}} грн.</p>
+				<p ng-show="general.checkout.service.frost">Мойка холодильника, ({{general.checkout.service.frost*price.frost.cost}} грн.</p>
+				<p ng-show="general.checkout.service.kitchen">Внутри шкафов, {{general.checkout.service.kitchen*price.kitchen.cost}} грн.</p>
+				<p ng-show="general.checkout.service.svch">Микроволновач печь, {{general.checkout.service.svch*price.svch.cost}} грн.</p>
+				<p ng-show="general.checkout.service.plates">Мойка посуды, {{general.checkout.service.plates*price.plates.cost}} грн.</p>
+				<p ng-show="general.checkout.service.oven">Духовка, {{general.checkout.service.oven*price.oven.cost}} грн.</p>
+				<p ng-show="general.checkout.service.extract">Вытяжка, {{general.checkout.service.extract*price.extract.cost}} грн.</p>
+			</div>
+			<div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 text-right">
+				<p><span class="gray">Адрес:</span> {{general.checkout.address}}</p>
+				<p><span class="gray">Дата:</span> {{general.checkout.date}} в {{general.checkout.time}}:00</p>
+				<p><span class="gray">Сумма:</span> 
+					{{general.toSend.total}} грн.
+				</p>
+				<p><span class="gray">Время уборки:</span> {{
+				general.toSend.time 
+				}} ч.</p>
+				<p ng-show="{{general.checkout.discount}}"><span class="gray">Скидка за регулярность: </span>-{{general.checkout.discount}}%</p>
+			</div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 summary-total-wrap">
+                            <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 summary-paymethod gray">
+                                <label><input type="radio"/>Visa, MasterCard</label><label><input type="radio"/>Наличные</label>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 summary__price">К оплате: {{general.toSend.payment}} грн.</div>
+                        </div>
+		</div>
+
+
+
+		<div class="center">
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                        <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 left"><button ui-sref="checkout" class="btn-change btn-rounded">Редактировать</button></div>
+                        <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6 right"><button ng-click="goHome()" class="btn-main btn-rounded">Оформить</button></div>
+                    </div>
+		</div>
+
+	</div>
+</div>

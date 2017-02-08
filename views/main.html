@@ -1,0 +1,590 @@
+<div >
+    <div class="first-item">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 login-wrap">
+            <div class="col-md-10 hidden-sm col-lg-10 hidden-xs"></div>
+            <div class="login-on-main col-md-2 col-sm-12 col-lg-2 col-xs-12" style="">
+                <div><a>Вход</a><span>/</span><a>Регистрация</a></div>
+            </div>
+        </div>    
+        <div class="logo"><a ui-sref="home"><img src="images/logo.png"></a></div>
+        <div class="form-wrap">
+            <div class="container">
+                <h2 ng-show="!sentSMS">Берегите свое время – уборкой займёмся мы!</h2>
+                <h2 ng-show="sentSMS">Введите SMS пароль:</h2>
+                <form action="#" method="POST" data-ng-submit="submitFirstStep($event)" ng-show="!sentSMS">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 content-center">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                    <div class="calc col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                                            <a class="minus col-md-2 col-sm-3 col-xs-3 col-lg-2"
+                                                    data-ng-click="decrement('rooms')"></a>
+                                            <div class="col-md-8 col-sm-6 col-xs-6 col-lg-8">{{general.rooms[general.current.rooms]}}</div>
+                                            <a class="plus col-md-2 col-sm-3 col-xs-3 col-lg-2"
+                                                    data-ng-click="increment('rooms')"></a>
+                                    </div>
+
+                                    <div class="calc col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                            <a class="minus col-md-2 col-sm-3 col-xs-3 col-lg-2"
+                                                    data-ng-click="decrement('bathrooms')"></a>
+                                            <div class="col-md-8 col-sm-6 col-xs-6 col-lg-8">{{general.bathrooms[general.current.bathrooms]}}</div>
+                                            <a class="plus col-md-2 col-sm-3 col-xs-3  col-lg-2" 
+                                                    data-ng-click="increment('bathrooms')"></a>
+                                    </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4" style="text-align: center;">
+                                    <div class="calc__input calc__input_phone">
+                                            <div class="calc__control calc__control_phone">+38</div>
+                                            <div class="phone-wrap">
+                                                <input 
+                                                        type="tel" 
+                                                        name="phone" 
+                                                        data-ng-model="general.phone"
+                                                        
+                                                        class="phone-input"
+                                                        data-ng-required="true"
+                                                        placeholder="(0__) ___-__-__"
+                                                        ui-mask="(099) 999-99-99"
+                                                        ui-mask-placeholder
+                                                        ui-mask-placeholder-char="_" />
+                                            </div>
+                                    </div>
+
+                                    <div>
+                                            <button      
+                                                    class="btn-main">Рассчитать стоимость</button>
+                                    </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2"></div>
+                    </div>
+
+                </form>
+                <div class="center"  ng-show="sentSMS">
+               
+			<div class="sms">
+				<input 
+					class="phone-input"
+					type="text" 
+					name="sms-code" 
+					maxlength="4" 
+					minlength="4" 
+					data-ng-required="true"
+					data-ng-model="smsCode"
+					placeholder="XXXX"
+					autofocus 
+					required />
+			</div>
+			<div class="">
+				<div>
+					<button ng-click="goToCheckout()" class="btn-main">Отправить</button>
+				</div>
+			</div>
+                </div>
+            </div>
+        </div>
+        <div class="bounce-wrap" ng-click="gotoSecond('second');">
+            <h2 style="margin-bottom: 45px;">Давайте знакомиться!</h2> 
+            <img  src="images/Rounded Rectangle 13.png" alt="" class="bounce"/>
+        </div>
+        
+    </div>
+    <div class="second-item" id="second">
+        <div class="head">
+            <h2>В уборке не бывает мелочей!</h2>
+        </div>
+        <div class="container ">
+                <div class="col-sm-12 col-md-6 col-xs-12 col-lg-6">
+<!--                    <div ng-repeat="secondA in content.cleaningTrifles.sideA track by $index" class="col-sm-12 col-md-12 col-xs-12 content-wrap">
+                        <div>
+                            <div class="circle"></div>
+                        </div>
+                        <div>
+                            <div class="item-head"><h4>{{secondA.name}}</h4></div>
+                            <div>
+                                <p>{{secondA.content}}</p>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class="col-sm-12 col-md-12 col-xs-12 content-wrap">
+                        <div>
+                            <div class="circle"><img class="icon-on-list" src="images/like.png"></div>
+                        </div>
+                        <div>
+                            <div class="item-head"><h4>Ставка на качество уборки</h4></div>
+                            <div>
+                                <p>Несмотря на инновационность и технологичность сервиса во главу угла мы поставили качество услуг уборки. 
+Детально проработана процедура и жесткие стандарты уборки. Применяем профессиональную гипоаллергенную химию. Средства австрийского производства отлично справляются даже с самыми сложными задачами уборки.
+Главное для нас абсолютная чистота и счастливый клиент!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-xs-12 content-wrap">
+                        <div>
+                            <div class="circle"><img class="icon-on-list" src="images/safeguard.png"></div>
+                        </div>
+                        <div>
+                            <div class="item-head"><h4>Страхуем на 100 000 грн.</h4></div>
+                            <div>
+                                <p>Уверены в клинерах, но для вашего комфорта страхуем их ответственность на 100 000 грн.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xs-12 col-lg-6">
+<!--                    <div ng-repeat="secondB in content.cleaningTrifles.sideB track by $index" class="col-sm-12 col-md-12 col-xs-12 col-lg-12 content-wrap">
+                        <div>
+                            <div class="circle"></div>
+                        </div>
+                        <div>
+                            <div class="item-head"><h4>{{secondB.name}}</h4></div>
+                            <div>
+                                <p>{{secondB.content}}</p>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div  class="col-sm-12 col-md-12 col-xs-12 col-lg-12 content-wrap">
+                        <div>
+                            <div class="circle"><img class="icon-on-list" src="images/percent.png"></div>
+                        </div>
+                        <div>
+                            <div class="item-head"><h4>Гарантия</h4></div>
+                            <div>
+                                <p>В случае, если Вам не понравится качество уборки клинера и Вы захотите дать нам еще один шанс мы уберем еще раз бесплатно. И новый клинер будет работать уже под контролем менеджера.
+Или если Вы не захотите дать второй шанс - вернем деньги.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="col-sm-12 col-md-12 col-xs-12 col-lg-12 content-wrap">
+                        <div>
+                            <div class="circle"><img class="icon-on-list" src="images/woman.png"></div>
+                        </div>
+                        <div>
+                            <div class="item-head"><h4>Ценим клинеров</h4></div>
+                            <div>
+                                <p>Мы очень щепетильно и тщательно отбираем клинеров. 
+                                    Инвестируем средства в их развитие и обучение. 
+                                    Для нас критически важно, чтобы сотрудник был профессионалом с
+                                    большой буквы. Убеждены, что только счастливые профессионала смогу сделать
+                                    лучшую уборку.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="foot col-md-12 col-sm-12 col-xs-12 col-lg-12"><h2>Закажите уборку прямо по цене от 490 гривен!</h2></div>
+        </div>
+        
+    </div>
+    <div class="third-item">
+        <div>
+            <div class="container">
+                <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+                    <div>
+                        <h4>Стандарт уборки Sky</h4>
+                    </div>
+                    <div>
+                        <p>У нас есть фирменные стандарты качества. Но у вас могут быть свои. Особые пожелания к уборке, вы можете
+                            сообщить о них в комментариях к заказу.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+                    <div class="wrap col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                        <div class="buttons" ng-click="setActive(1);" ng-class="{'active': activeButton === 1}">
+                            <div>
+                               <img class="icon-room" src="images/room1.png"> 
+                            </div>
+                            <div class="text-room">
+                                Жилые комнаты
+                            </div>
+                        </div>
+                        <div class="buttons" ng-click="setActive(2);" ng-class="{'active': activeButton === 2}">
+                            <div>
+                                <img class="icon-room" src="images/room2.png">
+                            </div>
+                            <div class="text-room">
+                                Коридор
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrap col-md-6 col-sm-6 col-xs-12 col-lg-6">
+                                <div class="buttons" ng-click="setActive(3);" ng-class="{'active': activeButton === 3}">
+                                    <div>
+                                        <img class="icon-room" src="images/room3.png">
+                                    </div>
+                                    <div class="text-room">
+                                        Кухня
+                                    </div>
+                                </div>
+                        <div class="buttons" ng-click="setActive(4);" ng-class="{'active': activeButton === 4}">
+                            <div>
+                               <img class="icon-room" src="images/room4.png"> 
+                            </div>
+                            <div class="text-room">
+                                Ванная и туалет
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="fourth-item">
+        <div class="head"><h2>Что мы делаем:</h2></div>
+        <div class="container">
+            <div class="list col-md-6 col-sm-12 col-xs-12 col-lg-6">
+                <ul>
+                    <li ng-repeat='item in content.whatWeDo track by $index'>{{item}}</li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+                <div class="head col-md-12 col-sm-12 col-xs-12 col-lg-12" >
+                    <h3>Дополнительные услуги</h3>
+                </div>
+                <div class="row-flip col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/window.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Окна</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                                   <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/jalousie.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Жалюзи</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/microwave.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Микро- 
+                                            волноки</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row-flip col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/frige.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Холо-
+                                            дильник</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                                   <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/inside.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Внутри кухонных шкафов</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                                   <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/oven-hood.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Вытяжка</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-flip col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="col-md-4 col-sm-6 col-xs-6 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/dishes.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Помыть посуду</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-6 col-lg-4">
+                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/oven.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Духовка</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 hidden-sm hidden-xs col-lg-4">
+                        <div class="flip-container" style="opacity: 0;"ontouchstart="this.classList.toggle('hover');">
+                            <div class="flipper">
+                                    <div class="front">
+                                        <img src="images/balcony.png">
+                                    </div>
+                                    <div class="back">
+                                        <span>Балконы</span>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="foot col-md-6 col-sm-12 col-xs-12 col-lg-12">
+                <p>Можно указать при заказе уборки или позвонив нам  по телефону: </p>
+                <p>по телефону: +38(096) 312-33-34</p>
+            </div>
+        </div>
+    </div>
+    <div class="fifth-item">
+        <div class="head col-md-12 col-sm-12 col-xs-12 col-lg-12"><h2>Чего мы НЕ делаем:</h2></div>
+        <div class="container">
+            <div class="list col-md-6 col-sm-12 col-xs-12 col-lg-6">
+                <ul>
+                    <li ng-repeat="fifthA in content.whatWeDoNot.sideA track by $index">{{fifthA}}</li>
+
+                </ul>
+            </div>
+            <div class="list col-md-6 col-sm-12 col-xs-12 col-lg-6">
+                <ul>
+                    <li ng-repeat="fifthB in content.whatWeDoNot.sideB track by $index">{{fifthB}}</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sixth-item">
+        <div class="container">
+            <div class="center">
+                <div class="item col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                    <div>
+                        <img src="images/1.png">
+                    </div>
+                    <div><strong>Можно ли убрать  балкон?</strong></div>
+                    <div><p>ДА, при заказе просто выберет дополнительную опцию «Балкон». Мы вытрем все поверхности, вымоем пол, очистим балконное остекление.</p></div>
+                </div>
+                <div class="item col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                    <div>
+                        <img src="images/2.png">
+                    </div>
+                    <div><strong>Платить банковской хорошо, но я хочу расплатиться наличными?</strong></div>
+                    <div><p>Без вопросов. Можете оплатить наличными клинеру по факту уборки.</p></div>
+                </div>
+                <div class="item col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                    <div>
+                        <img src="images/3.png">
+                    </div>
+                    <div><strong>Можно ли заказать химическую чистку мебели и ковров?</strong></div>
+                    <div><p>ДА, при заказе укажите в комментарии необходимость химической чистки мебели и/или ковров. Клиенер будет обеспечен всей необходимой для этого техникой и средствами.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="seventh-item">
+        <div class="container">
+            <div class="head"><h2>Отзывы:</h2></div>
+            <div class="comment col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="col-md-1 hidden-sm hidden-xs col-lg-1">
+                </div>
+                <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10">
+                    <div class="image-wrap col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <img src="images/comment-1.png">
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <div class="comment-head">Виктория Самойлова</div>
+                        <div class="comment-date">02/05/2016</div>
+                        <div class="comment-body">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
+                            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время
+                            некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum
+                            для распечатки образцов.</div>
+                    </div>
+                </div>
+                <div class="col-md-1 hidden-sm hidden-xs col-lg-1">
+
+                </div>
+            </div>
+            <div class="comment col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="col-md-1 hidden-sm hidden-xs col-lg-1">
+                </div>
+                <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10">
+                    <div class="image-wrap col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <img src="images/comment-2.png">
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <div class="comment-head">Виктория Самойлова</div>
+                        <div class="comment-date">02/05/2016</div>
+                        <div class="comment-body">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
+                            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время
+                            некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum
+                            для распечатки образцов.</div>
+                    </div>
+                </div>
+                <div class="col-md-1 hidden-sm hidden-xs col-lg-1">
+
+                </div>
+            </div>
+            <div class="comment col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="col-md-1 hidden-sm hidden-xs col-lg-1">
+                </div>
+                <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10">
+                    <div class="image-wrap col-md-2 col-sm-2 col-xs-2 col-lg-2">
+                        <img src="images/comment-3.png">
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
+                        <div class="comment-head">Виктория Самойлова</div>
+                        <div class="comment-date">02/05/2016</div>
+                        <div class="comment-body">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
+                            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время
+                            некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum
+                            для распечатки образцов.</div>
+                    </div>
+                </div>
+                <div class="col-md-1 hidden-sm hidden-xs col-lg-1">
+
+                </div>
+            </div>
+            <div class="more-comment col-md-12 col-sm-12 col-xs-12 col-lg-12"><a>Читать все отзывы</a></div>
+        </div>
+    </div>
+    <div class="eighth-item">
+        <div class="form-wrap">
+            <div class="container">
+                <h2 ng-show="!sentSMS">Берегите свое время – уборкой займёмся мы!</h2>
+                <h2 ng-show="sentSMS">Введите SMS пароль:</h2>
+                <form ng-show="!sentSMS" action="#" method="POST" data-ng-submit="submitFirstStep($event)">
+                    <div class="col-md-12 col-sm-12 col-lg-12 content-center">
+                            <div class="col-md-2 col-lg-2"></div>
+                            <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                                    <div class="calc col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                            <a class="minus col-md-2 col-sm-3 col-xs-3 col-lg-2"
+                                                    data-ng-click="decrement('rooms')"></a>
+                                            <div class="col-md-8 col-sm-6 col-xs-6 col-lg-8">{{general.rooms[general.current.rooms]}}</div>
+                                            <a class="plus col-md-2 col-sm-3 col-xs-3 col-lg-2"
+                                                    data-ng-click="increment('rooms')"></a>
+                                    </div>
+
+                                    <div class="calc col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                            <a class="minus col-md-2 col-sm-3 col-xs-3 col-lg-2"
+                                                    data-ng-click="decrement('bathrooms')"></a>
+                                            <div class="col-md-8 col-sm-6 col-xs-6 col-lg-8">{{general.bathrooms[general.current.bathrooms]}}</div>
+                                            <a class="plus col-md-2 col-sm-3 col-xs-3 col-lg-2"
+                                                    data-ng-click="increment('bathrooms')"></a>
+                                    </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4" style="text-align: center;">
+                                    <div class="calc__input calc__input_phone">
+                                            <div class="calc__control calc__control_phone">+38</div>
+                                            <div class="phone-wrap">
+                                                <input 
+                                                        type="tel" 
+                                                        name="phone" 
+                                                        data-ng-model="general.phone"
+                                                        
+                                                        class="phone-input"
+                                                        data-ng-required="true"
+                                                        placeholder="(0__) ___-__-__"
+                                                        ui-mask="(099) 999-99-99"
+                                                        ui-mask-placeholder
+                                                        ui-mask-placeholder-char="_" />
+                                            </div>
+                                    </div>
+
+                                    <div>
+                                            <button 
+                                                    type="submit" 
+                                                    class="btn-main">Рассчитать стоимость</button>
+                                    </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2"></div>
+                    </div>
+                </form>
+                <div class="center"  ng-show="sentSMS">
+               
+			<div class="sms">
+				<input 
+					class="phone-input"
+					type="text" 
+					name="sms-code" 
+					maxlength="4" 
+					minlength="4" 
+					data-ng-required="true"
+					data-ng-model="smsCode"
+					placeholder="XXXX"
+					autofocus 
+					required />
+			</div>
+			<div class="">
+				<div>
+					<button ng-click="goToCheckout()" class="btn-main">Отправить</button>
+				</div>
+			</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+            <div class="company-wrap col-md-2 col-sm-12 col-xs-12 col-lg-2">
+                <div class="social col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <a target="_blank"><img src="images/facebook.png"></a>
+                    <a href="https://vk.com" target="_blank"><img src="images/vk.png"></a>
+                    <a target="_blank"><img src="images/twitter.png"></a>
+                    <a target="_blank"><img src="images/instagramm.png"></a>
+                </div>
+                <div class="Company col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <img class="logo-bottom" src="images/logo-bottom.png">
+                </div>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs col-lg-3">
+                
+            </div>
+            <div class="col-md-7 col-sm-12 col-xs-12 col-lg-7">
+                <div class="nav col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                        <a >О компании</a>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                        <a >Часто задаваемые вопросы</a>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                        <a >Ваши предложения</a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="copyright col-md-3 col-sm-12 col-xs-12 col-lg-3">
+                        Copyright © 2016
+                    </div>
+                    <div class=" col-md-9 hidden-sm hidden-xs col-lg-9">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

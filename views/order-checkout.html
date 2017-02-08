@@ -1,0 +1,185 @@
+<div >
+    <div class="container">
+        <div class="logo center"><a ui-sref="home"><img src="images/logo.png"></a></div>
+	<div class="col-md-12">
+                <div class="checkout-text">
+                    <h2>выберите удобное время и укажите адрес</h2>
+                </div>
+		<div class="col-md-12">
+			<div class="center col-md-4 col-sm-12 col-xs-12 col-lg-4">
+				<div class="w-input">
+					<div class="address-input">
+						<input  ng-class="{'error':error === true}"
+                                                        ng-change="eraseErrors();"
+							type="text" 
+							name="address" 
+							placeholder="улица, дом, квартира" 
+							class="input-blue rounded-input" 
+							style="width: 100%;box-sizing: border-box;"
+							required
+							ng-model="general.checkout.address" />
+					</div>
+				</div>
+				<div class="w-input">
+					<div class="center-input">
+						<div class="col-sm-12 col-xs-12 col-md-5 col-lg-5" style="padding: 0;">
+							<input 
+								type="text" 
+								name="date" 
+								id="datepicker" 
+								class="input-blue rounded-input" 
+								ng-model="general.checkout.date" />
+						</div>
+						<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7" style="padding: 0;">
+							<select class="rounded-input checkout-select" ng-init="general.checkout.time = 9" ng-model="general.checkout.time">
+								<option value="9">9:00</option>
+								<option value="10">10:00</option>
+								<option value="11">11:00</option>
+								<option value="12">12:00</option>
+								<option value="13">13:00</option>
+								<option value="14">14:00</option>
+								<option value="15">15:00</option>
+								<option value="16">16:00</option>
+								<option value="17">17:00</option>
+								<option value="18">18:00</option>
+								<option value="19">19:00</option>
+								<option value="20">20:00</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12 col-lg-8"> 
+				<div class="discount">
+                                    <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+					<div ng-class="general.checkout.discount == 0 ? 'discount__item discount__item_active': 'discount__item'" ng-click="discount($event, 0)"><span class="first">Один раз</span></div>
+					<div ng-class="general.checkout.discount == 10 ? 'discount__item discount__item_active': 'discount__item'" ng-click="discount($event, 10)"><span>Раз в неделю</span><strong>-10%</strong></div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
+					<div ng-class="general.checkout.discount == 15 ? 'discount__item discount__item_active': 'discount__item'" ng-click="discount($event, 15)"><span>Раз в 2 недели</span><strong>-15%</strong></div>
+					<div ng-class="general.checkout.discount == 20 ? 'discount__item discount__item_active': 'discount__item'" ng-click="discount($event, 20)"><span>Раз в месяц</span><strong>-20%</strong></div>
+                                    </div>
+                                </div>
+			</div>
+		</div>
+		
+	</div>
+
+	
+	<div class="checkout-text">
+		<div class="checkout-text">
+                    <h2>Возможно мы можем сделать для вас что-то еще?</h2>
+                </div>
+
+		<div class="col-md-12">
+                    <div class="checkout-button col-md-6 col-xs-12 col-sm-12 col-lg-6">
+                        <div class=" text-center service">
+                                <div  ng-click="clickIconHandler('window');"
+                                        class="service__item" 
+                                        ng-class="general.checkout.service.window ? 'service__item_active' : ''">
+                                                <span ng-if="!!general.checkout.service.window">{{general.checkout.service.window * price.window.cost}} грн.</span><i ng-if="!general.checkout.service.window" class="service__icon service__icon_window"></i></div>
+                                <div class="btn-wrap">
+                                    <span ng-click="decrement('window')"><img src="images/s-minus.png"></span>
+                                    <strong class="service__name service-name-count">
+                                            {{general.checkout.service.window ? (general.checkout.service.window == 1 ? '1 окно' : general.checkout.service.window + ' окна') : 'Окна'}}
+                                    </strong>
+                                    <span ng-click="clickIconHandler('window');"><img src="images/s-plus.png"></span>
+                                </div>
+                        </div>
+                        <div class="text-center service">
+                                <div class="service__item" ng-click="clickIconHandler('roller');"
+                                        ng-class="general.checkout.service.roller ? 'service__item_active' : ''">
+                                           <span ng-if="!!general.checkout.service.roller">{{general.checkout.service.roller * price.roller.cost}} грн.</span><i ng-if="!general.checkout.service.roller" class="service__icon service__icon_roller"></i></div>
+                                                
+                                <div class="btn-wrap">
+                                    <span ng-click="decrement('roller')";><img src="images/s-minus.png"></span>
+                                    <strong class="service__name service-name-count">
+                                            {{general.checkout.service.roller ? (general.checkout.service.roller + ' жалюзи') : 'Жалюзи'}}
+                                    </strong>
+                                    <span ng-click="clickIconHandler('roller');"><img src="images/s-plus.png"></span>
+                                </div>
+
+                        </div>
+                        <div class="text-center service">
+                                <div class="service__item" 
+                                        ng-class="general.checkout.service.balcon ? 'service__item_active' : ''"
+                                        ng-click="clickIconHandler('balcon', general.checkout.service.balcon);"><span ng-if="!!general.checkout.service.balcon">{{price.balcon.cost}} грн.</span><i ng-if="!general.checkout.service.balcon" class="service__icon service__icon_balcon"></i></div>
+                                <strong class="service__name">Балконы</strong>
+                        </div>
+                    </div>
+                    <div class="checkout-button col-md-6 col-xs-12 col-sm-12 col-lg-6">
+                        <div class=" text-center service">
+                                <div class="service__item" 
+                                        ng-class="general.checkout.service.frost ? 'service__item_active' : ''"
+                                        ng-click="clickIconHandler('frost', general.checkout.service.frost);"><span ng-if="!!general.checkout.service.frost">{{price.frost.cost}} грн.</span><i ng-if="!general.checkout.service.frost"class="service__icon service__icon_frost"></i></div>
+                                <strong class="service__name">Холодильник</strong>
+                        </div>
+                        <div class="text-center service">
+                                <div class="service__item" 
+                                        ng-class="general.checkout.service.kitchen ? 'service__item_active' : ''"
+                                        ng-click="clickIconHandler('kitchen', general.checkout.service.kitchen);"><span ng-if="!!general.checkout.service.kitchen">{{price.kitchen.cost}} грн.</span><i ng-if="!general.checkout.service.kitchen"class="service__icon service__icon_kitchen"></i></div>
+                                <strong class="service__name">Внутри кухонных шкафов</strong>
+                        </div>
+                        <div class=" text-center service">
+                            <div class="service__item" 
+                                    ng-class="general.checkout.service.svch ? 'service__item_active' : ''"
+                                    ng-click="clickIconHandler('svch', general.checkout.service.svch);"><span ng-if="!!general.checkout.service.svch">{{price.svch.cost}} грн.</span><i ng-if="!general.checkout.service.svch" class="service__icon service__icon_svch"></i></div>
+                            <strong class="service__name">Микроволновка</strong>
+                        </div>
+                    </div>
+                    <div class="checkout-button col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                        <div class="text-center service">
+                            <div class="service__item" 
+                                    ng-class="general.checkout.service.plates ? 'service__item_active' : ''"
+                                    ng-click="clickIconHandler('plates', general.checkout.service.plates);"><span ng-if="!!general.checkout.service.plates">{{price.plates.cost}} грн.</span><i ng-if="!general.checkout.service.plates" class="service__icon service__icon_plates"></i></div>
+                            <strong class="service__name">Помыть посуду</strong>
+                        </div>
+                        <div class="text-center service">
+                                <div class="service__item" 
+                                        ng-class="general.checkout.service.oven ? 'service__item_active' : ''"
+                                        ng-click="clickIconHandler('oven', general.checkout.service.oven);"><span ng-if="!!general.checkout.service.oven">{{price.oven.cost}} грн.</span><i ng-if="!general.checkout.service.oven" class="service__icon service__icon_oven"></i></div>
+                                <strong class="service__name">Духовка</strong>
+                        </div>
+                        <div class="text-center service">
+                                <div class="service__item" 
+                                        ng-class="general.checkout.service.extract ? 'service__item_active' : ''"
+                                        ng-click="clickIconHandler('extract', general.checkout.service.extract);"><span ng-if="!!general.checkout.service.extract">{{price.extract.cost}} грн.</span><i ng-if="!general.checkout.service.extract" class="service__icon service__icon_extract"></i></div>
+                                <strong class="service__name">Вытяжка</strong>
+                        </div> 
+                    </div>
+            </div>	
+	</div>
+
+	<div class="button-center">
+            <div class="button-with-calc">
+                <div></div>
+		<button type="submit" class="btn-main btn-rounded rounded" ng-click="goToConfirm()">Далее</button>
+                <div class="calc-checkout">Сумма: {{(      general.checkout.service.roller*price.roller.cost
+                            + general.checkout.service.balcon*price.balcon.cost
+                            + general.checkout.service.frost*price.frost.cost
+                            + general.checkout.service.svch*price.svch.cost
+                            + general.checkout.service.plates*price.plates.cost
+                            + general.checkout.service.oven*price.oven.cost
+                            + general.checkout.service.extract*price.extract.cost
+                            + general.checkout.service.kitchen*price.kitchen.cost
+                            + general.checkout.service.window*price.window.cost ).toFixed(2)}}</div>
+            </div>
+	</div>
+        
+    </div>
+    <div class="footer-checkout">
+        <div class="nav col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                    <div class="col-md-3 hidden-sm hidden-xs col-lg-3"></div>
+                    <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2">
+                        <a >Личный кабинет</a>
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2">
+                        <a >Настройки</a>
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2">
+                        <a >Вопросы</a>
+                    </div>
+                    <div class="col-md-3 hidden-sm hidden-xs col-lg-3"></div>
+                </div>
+    </div>
+</div>
